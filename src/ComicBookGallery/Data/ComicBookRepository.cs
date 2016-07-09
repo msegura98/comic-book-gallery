@@ -62,17 +62,7 @@ namespace ComicBookGallery.Data
 
         public ComicBook GetComicBook(int id)
         {
-            ComicBook comicBookToReturn = null;
-
-            foreach(var comicBook in _comicBooks)
-            {
-                if(comicBook.Id == id)
-                {
-                    comicBookToReturn = comicBook;
-                    break;
-                }
-            }
-
+            ComicBook comicBookToReturn = (from comicBook in _comicBooks where comicBook.Id == id select comicBook).First();
             return comicBookToReturn;
         }
         
